@@ -42,7 +42,7 @@ export function Header() {
         <h1 className="mb-0.5 text-heading-5 font-bold text-dark dark:text-white">
           Panther LaunchPad
         </h1>
-        <p className="font-medium">Launching Tokens of the Future</p>
+        <p className="font-medium">Launching Tokens of the Futures</p>
       </div>
 
 
