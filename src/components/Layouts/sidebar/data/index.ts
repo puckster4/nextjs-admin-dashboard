@@ -5,17 +5,17 @@ export const NAV_DATA = [
     label: "MAIN MENU",
     items: [
       {
-        title: "Dashboard",
+        title: "Home",
         icon: Icons.HomeIcon,
         items: [
           {
-            title: "eCommerce",
+            title: "Launched Tokens",
             url: "/",
           },
         ],
       },
       {
-        title: "Calendar",
+        title: "Panther Token",
         url: "/calendar",
         icon: Icons.Calendar,
         items: [],

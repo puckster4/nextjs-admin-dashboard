@@ -11,6 +11,10 @@ import type { Metadata } from "next";
 import NextTopLoader from "nextjs-toploader";
 import type { PropsWithChildren } from "react";
 import { Providers } from "./providers";
+import { SolanaProvider } from "@/components/Wallet/wallet-button";
+import { ClusterProvider } from "@/components/cluster/cluster-data-access";
+// import "@solana/wallet-adapter-react-ui/styles.css";
+
 
 export const metadata: Metadata = {
   title: {
@@ -21,25 +25,28 @@ export const metadata: Metadata = {
     "Next.js admin dashboard toolkit with 200+ templates, UI components, and integrations for fast dashboard development.",
 };
 
-export default function RootLayout({ children }: PropsWithChildren) {
+export default function RootLayout({ 
+  children 
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <Providers>
-          <NextTopLoader color="#5750F1" showSpinner={false} />
-
-          <div className="flex min-h-screen">
-            <Sidebar />
-
-            <div className="w-full bg-gray-2 dark:bg-[#020d1a]">
-              <Header />
-
-              <main className="isolate mx-auto w-full max-w-screen-2xl overflow-hidden p-4 md:p-6 2xl:p-10">
-                {children}
-              </main>
-            </div>
-          </div>
-        </Providers>
+        <ClusterProvider>
+          <SolanaProvider>
+            <Providers>
+              <NextTopLoader color="#5750F1" showSpinner={false} />
+              <div className="flex min-h-screen">
+                <Sidebar />
+                <div className="w-full bg-gray-2 dark:bg-[#020d1a]">
+                  <Header />
+                  <main className="isolate mx-auto w-full max-w-screen-2xl overflow-hidden p-4 md:p-6 2xl:p-10">
+                    {children}
+                  </main>
+                </div>
+              </div>
+            </Providers>
+          </SolanaProvider>
+        </ClusterProvider>
       </body>
     </html>
   );
